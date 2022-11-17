@@ -19,8 +19,6 @@ module.exports = config => {
   // Plugins
   config.addPlugin(rssPlugin);
   
-  // Set directories to pass through to the dist folder
-  config.addPassthroughCopy('./src/images/');
   // Returns work items, sorted by display order
   config.addCollection('work', collection => {
     return sortByDisplayOrder(collection.getFilteredByGlob('./src/work/*.md'));
