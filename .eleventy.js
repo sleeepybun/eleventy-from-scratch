@@ -19,6 +19,10 @@ module.exports = config => {
   // Plugins
   config.addPlugin(rssPlugin);
   
+  // Only minify HTML if we are in production because it slows builds _right_ down
+  if (isProduction) {
+    config.addTransform('htmlmin', htmlMinTransform);
+  }
   // Returns work items, sorted by display order
   config.addCollection('work', collection => {
     return sortByDisplayOrder(collection.getFilteredByGlob('./src/work/*.md'));
